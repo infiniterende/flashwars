@@ -1,17 +1,33 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import Link from "next/link";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+import localFont from "next/font/local";
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../public/fonts/Satoshi-Light.woff",
+      weight: "300",
+    },
+    {
+      path: "../public/fonts/Satoshi-Regular.woff",
+      weight: "400",
+    },
+    {
+      path: "../public/fonts/Satoshi-Medium.woff",
+      weight: "500",
+    },
+    {
+      path: "../public/fonts/Satoshi-Bold.woff",
+      weight: "700",
+    },
+  ],
+  variable: "--font-satoshi",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +41,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${satoshi.variable} font-sans`}>
+        <div className="flex min-h-screen bg-gray-100">
+          {/* Sidebar */}
+          <aside className="w-64 bg-white shadow-lg">
+            <nav className="p-6">
+              <h2 className="text-2xl font-bold mb-4 text-teal-600">
+                flashwars
+              </h2>
+              <ul>
+                <li className="mb-2">
+                  <Link href="/">
+                    <p className="block py-2 px-4 rounded hover:bg-gray-200">
+                      Home
+                    </p>
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link href="/decks">
+                    <p className="block py-2 px-4 rounded hover:bg-gray-200">
+                      Decks
+                    </p>
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link href="/analytics">
+                    <p className="block py-2 px-4 rounded hover:bg-gray-200">
+                      Analytics
+                    </p>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </aside>
+
+          {/* Main content area */}
+          <main className="flex-1 p-6">{children}</main>
+        </div>
       </body>
     </html>
   );
