@@ -73,21 +73,23 @@ const DecksPage = () => {
 
   return (
     <div className="mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center text-teal-600">
-        Decks
-      </h2>
-      <div className="flex justify-center">
-        <button
-          className=" px-8 py-2 bg-teal-500 text-white rounded-lg"
-          onClick={() => setShowModal(true)}
-        >
-          Add Deck
-        </button>
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-bold mb-4 text-center text-teal-700">
+          Decks
+        </h2>
+        <div className="flex justify-center">
+          <button
+            className=" px-8 py-2 bg-teal-700 border-black text-white shadow-md rounded-lg"
+            onClick={() => setShowModal(true)}
+          >
+            Add Deck
+          </button>
+        </div>
       </div>
       <div className="flex min-h-screen text-center">
         {/* Sidebar */}
 
-        <div className="flex flex-row flex-wrap m-8 p-8">
+        <div className="flex flex-row flex-wrap my-8">
           {decks.map((deck: any) => (
             <DeckCard id={deck.id} title={deck.title} />
           ))}

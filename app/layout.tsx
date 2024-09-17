@@ -46,8 +46,8 @@ export default function RootLayout({
           {/* Sidebar */}
           <aside className="w-64 bg-white shadow-lg">
             <nav className="p-6">
-              <h2 className="text-2xl font-bold mb-4 text-teal-600">
-                flashwars
+              <h2 className="text-2xl font-bold mb-4 text-teal-500">
+                flash<span className="text-black">wars</span>
               </h2>
               <ul>
                 <li className="mb-2">
