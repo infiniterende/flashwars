@@ -74,12 +74,12 @@ const DecksPage = () => {
   return (
     <div className="mx-auto">
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold mb-4 text-center text-teal-700">
+        <h2 className="text-2xl font-bold mb-4 text-center text-teal-500">
           Decks
         </h2>
         <div className="flex justify-center">
           <button
-            className=" px-8 py-2 bg-teal-700 border-black text-white shadow-md rounded-lg"
+            className=" px-8 py-2 bg-teal-500 border-black text-white shadow-md rounded-lg"
             onClick={() => setShowModal(true)}
           >
             Add Deck
