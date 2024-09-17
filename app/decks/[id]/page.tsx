@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import {
   Carousel,
   CarouselContent,
@@ -10,14 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

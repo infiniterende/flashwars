@@ -10,7 +10,7 @@ const AddDeckPage = () => {
 
   console.log(formData);
   console.log(showModal);
-
+  console.log(decks);
   const router = useRouter();
 
   const fetchData = async () => {
@@ -39,8 +39,8 @@ const AddDeckPage = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    let data = new FormData();
-    for (let key in formData) {
+    const data = new FormData();
+    for (const key in formData) {
       data.append(key, formData[key]);
     }
     console.log(data);

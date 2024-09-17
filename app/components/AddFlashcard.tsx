@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter, redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
-import prisma from "@/prisma/client";
+import { useRouter } from "next/navigation";
 import Select from "react-select";
 
 const AddFlashcard = () => {
@@ -44,8 +42,8 @@ const AddFlashcard = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    let data = new FormData();
-    for (let key in formData) {
+    const data = new FormData();
+    for (const key in formData) {
       data.append(key, formData[key]);
     }
     console.log(data);
