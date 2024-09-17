@@ -89,13 +89,6 @@ const FlashcardPage = () => {
                   </p>
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/analytics">
-                  <p className="block py-2 px-4 rounded hover:bg-gray-200">
-                    Analytics
-                  </p>
-                </Link>
-              </li>
             </ul>
           </nav>
         </aside>

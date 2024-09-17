@@ -90,3 +90,18 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.carousel-previous,
+.carousel-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.carousel-previous {
+  left: -50px; /* Adjust this value to position the "previous" button */
+}
+
+.carousel-next {
+  right: -50px; /* Adjust this value to position the "next" button */
+}

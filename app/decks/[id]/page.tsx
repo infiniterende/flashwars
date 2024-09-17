@@ -62,8 +62,8 @@ const DeckPage = () => {
           Add Flashcard
         </Link>
       </div>
-      <div className="flex items-center justify-center">
-        <Carousel className="w-full flex align-center justify-center max-w-md">
+      <div className="flex  items-center justify-center">
+        <Carousel className="w-1/2 flex align-center justify-center">
           <CarouselContent>
             {flashcards?.map((flashcard: any, index: number) => (
               <CarouselItem key={index}>
@@ -79,7 +79,10 @@ const DeckPage = () => {
                     </CardContent>
                   </Card>
                   <div className="flex flex-col items-center justify-center p-6">
-                    <Button onClick={() => setShowAnswer(!showAnswer)}>
+                    <Button
+                      className="bg-teal-500 text-white"
+                      onClick={() => setShowAnswer(!showAnswer)}
+                    >
                       {showAnswer ? "Hide Answer" : "Show Answer"}
                     </Button>
                   </div>
@@ -87,8 +90,8 @@ const DeckPage = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="carousel-previous bg-teal-500 text-white" />
+          <CarouselNext className="carousel-next bg-teal-500 text-white" />
         </Carousel>
       </div>
     </div>

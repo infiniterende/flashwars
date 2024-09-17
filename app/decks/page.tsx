@@ -72,31 +72,30 @@ const DecksPage = () => {
   };
 
   return (
-    <div>
-      <div className="flex min-h-screen">
+    <div className="mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-center text-teal-600">
+        Decks
+      </h2>
+      <div className="flex justify-center">
+        <button
+          className=" px-8 py-2 bg-teal-500 text-white rounded-lg"
+          onClick={() => setShowModal(true)}
+        >
+          Add Deck
+        </button>
+      </div>
+      <div className="flex min-h-screen text-center">
         {/* Sidebar */}
-        <aside className="w-64 shadow-lg">
-          <nav className="p-6">
-            <h2 className="text-2xl font-bold mb-4 text-center text-teal-600">
-              Decks
-            </h2>
-            <div className="flex flex-row flex-wrap">
-              {decks.map((deck: any) => (
-                <DeckCard id={deck.id} title={deck.title} />
-              ))}
-            </div>
-          </nav>
-        </aside>
+
+        <div className="flex flex-row flex-wrap m-8 p-8">
+          {decks.map((deck: any) => (
+            <DeckCard id={deck.id} title={deck.title} />
+          ))}
+        </div>
 
         {/* Main content area */}
       </div>
 
-      <button
-        className="px-4 py-2 bg-teal-500 text-white rounded-lg"
-        onClick={() => setShowModal(true)}
-      >
-        Add Deck
-      </button>
       {showModal && (
         <div
           className="relative z-10"
