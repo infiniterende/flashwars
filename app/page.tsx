@@ -1,28 +1,30 @@
 import Link from "next/link";
-
+import Image from "next/image";
+import RegisterForm from "./forms/RegisterForm";
 export default function Home() {
   return (
-    <div className="flex-1 flex flex-col text-center justify-center">
-      <h1 className="text-4xl font-extrabold p-4">
-        Create. <span className="text-teal-500">Learn.</span> Memorize.
-      </h1>
-      <h2 className="text-2xl">
-        {" "}
-        Improve your retention and memory through making flashcards{" "}
-      </h2>
-      <div className="flex items-center justify-center m-8">
-        <img className="" src="/images/bg_image.jpg" alt="bg" width="500px" />
-      </div>
+    <div className="flex h-screen max-h-screen text-3xl text-white">
+      <section className="remove-scrollbar container my-auto">
+        <div className="sub-container max-w-[496px]">
+          <h2 className="text-teal-500 my-6 text-2xl">flashwars </h2>
 
-      <h2 className="text-2xl">
-        Make a deck{" "}
-        <Link href="/decks/new" className="text-white">
-          {" "}
-          <button className="px-4 py-2 rounded-lg bg-teal-500">
-            now.
-          </button>{" "}
-        </Link>
-      </h2>
+          <RegisterForm />
+
+          <div className="text-14-regular flex justify-between mt-20">
+            {" "}
+            <p className="justify-items-end text-dark-600 xl:text-left">
+              &copy; 2024 flashwars
+            </p>{" "}
+          </div>
+        </div>
+      </section>
+      <Image
+        src="/assets/images/library.jpg"
+        height={1000}
+        width={1000}
+        alt="library"
+        className="side-img max-w-[50%] opacity-80"
+      />
     </div>
   );
 }

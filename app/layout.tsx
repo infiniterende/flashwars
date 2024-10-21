@@ -1,29 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
-import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
-const satoshi = localFont({
-  src: [
-    {
-      path: "../public/fonts/Satoshi-Light.woff",
-      weight: "300",
-    },
-    {
-      path: "../public/fonts/Satoshi-Regular.woff",
-      weight: "400",
-    },
-    {
-      path: "../public/fonts/Satoshi-Medium.woff",
-      weight: "500",
-    },
-    {
-      path: "../public/fonts/Satoshi-Bold.woff",
-      weight: "700",
-    },
-  ],
-  variable: "--font-satoshi",
+const fontSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -38,36 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${satoshi.variable} font-sans`}>
-        <div className="flex min-h-screen bg-gray-100">
-          {/* Sidebar */}
-          <aside className="w-64 bg-white shadow-lg">
-            <nav className="p-6">
-              <h2 className="text-2xl font-bold mb-4 text-teal-500">
-                flash<span className="text-black">wars</span>
-              </h2>
-              <ul>
-                <li className="mb-2">
-                  <Link href="/">
-                    <p className="block py-2 px-4 rounded hover:bg-gray-200">
-                      Home
-                    </p>
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/decks">
-                    <p className="block py-2 px-4 rounded hover:bg-gray-200">
-                      Decks
-                    </p>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-
-          {/* Main content area */}
-          <main className="flex-1 p-6">{children}</main>
-        </div>
+      <body
+        className={cn(
+          "min-h-screen bg-dark-300 font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
