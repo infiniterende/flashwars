@@ -15,3 +15,7 @@ export const FlashcardFormValidation = z.object({
   deck: z.string(),
   lastReviewed: z.coerce.date(),
 });
+
+export const DeckFormValidation = z.object({
+  title: z.string().min(2, "Title must be at least 2 characters"),
+});

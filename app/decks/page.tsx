@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import DeckModal from "../components/DeckModal";
 
 const DecksPage = () => {
   const [showModal, setShowModal] = useState<any>(false);
@@ -35,17 +36,22 @@ const DecksPage = () => {
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container">
-        <div className="sub-container max-w-[496px]">
-          <h1 className="text-3xl">Decks</h1>
-          {decks?.map((deck: any) => (
-            <Card className="w-[300px] h-[200px] flex items-center justify-center">
-              <CardHeader>
-                <CardTitle className="text-2xl">
-                  <Link href={`/decks/${deck.$id}`}> {deck.title}</Link>
-                </CardTitle>
-              </CardHeader>
-            </Card>
-          ))}
+        <div className="sub-container max-w-[860px]">
+          <h1 className="text-3xl text-center">Decks</h1>
+          <div className="flex justify-center">
+            <DeckModal />
+          </div>
+          <div className="flex flex-wrap flex-row">
+            {decks?.map((deck: any) => (
+              <Card className="w-[300px] h-[200px] flex items-center justify-center m-4">
+                <CardHeader>
+                  <CardTitle className="text-2xl">
+                    <Link href={`/decks/${deck.$id}`}> {deck.title}</Link>
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
     </div>
