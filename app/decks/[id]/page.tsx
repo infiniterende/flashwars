@@ -11,7 +11,6 @@ import {
 
 import { Card, CardContent } from "@/components/ui/card";
 import FlashcardModal from "@/app/components/FlashcardModal";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { getFlashcards } from "@/lib/actions/flashcard.actions";
@@ -48,36 +47,38 @@ const DeckPage = () => {
       <section className="remove-scrollbar container">
         <div className="sub-container max-w-[1020px] flex-1 flex-row py-10">
           <div className="flex  items-center justify-center my-auto">
-            <Carousel className="w-1/2 flex align-center justify-center">
-              <CarouselContent>
-                {flashcards?.map((flashcard: any, index: number) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <Card className="flex w-96 h-72 justify-center items-center m-auto">
-                        <CardContent>
-                          {!showAnswer && (
-                            <span className="">{flashcard.question}</span>
-                          )}
-                          {showAnswer && (
-                            <span className="">{flashcard.answer}</span>
-                          )}
-                        </CardContent>
-                      </Card>
-                      <div className="flex flex-col items-center justify-center p-6">
-                        <Button
-                          className="bg-teal-500 text-white"
-                          onClick={() => setShowAnswer(!showAnswer)}
-                        >
-                          {showAnswer ? "Hide Answer" : "Show Answer"}
-                        </Button>
+            {flashcards && (
+              <Carousel className="w-1/2 flex align-center justify-center">
+                <CarouselContent>
+                  {flashcards?.map((flashcard: any, index: number) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card className="flex w-96 h-72 justify-center items-center m-auto">
+                          <CardContent>
+                            {!showAnswer && (
+                              <span className="">{flashcard.question}</span>
+                            )}
+                            {showAnswer && (
+                              <span className="">{flashcard.answer}</span>
+                            )}
+                          </CardContent>
+                        </Card>
+                        <div className="flex flex-col items-center justify-center p-6">
+                          <Button
+                            className="bg-teal-500 text-white"
+                            onClick={() => setShowAnswer(!showAnswer)}
+                          >
+                            {showAnswer ? "Hide Answer" : "Show Answer"}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="carousel-previous bg-teal-500 text-white" />
-              <CarouselNext className="carousel-next bg-teal-500 text-white" />
-            </Carousel>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="carousel-previous bg-teal-500 text-white" />
+                <CarouselNext className="carousel-next bg-teal-500 text-white" />
+              </Carousel>
+            )}
           </div>
           <FlashcardModal />
           <div className="flex justify-center">

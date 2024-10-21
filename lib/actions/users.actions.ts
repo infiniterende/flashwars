@@ -2,9 +2,8 @@
 
 import { ID, Query } from "node-appwrite";
 
-import { databases, storage, users, account } from "../appwrite.config";
+import { users, account } from "../appwrite.config";
 import { parseStringify } from "../utils";
-import { parse } from "path";
 
 export interface CreateUserParams {
   email: string;
@@ -70,12 +69,9 @@ export const getUser = async (userId: string) => {
   }
 };
 
-export const loginUser = async (loginDetails: LoginParams) => {
+export const loginUser = async ({ email, password }: LoginParams) => {
   try {
-    const result = await account.createEmailPasswordSession(
-      loginDetails.email,
-      loginDetails.password
-    );
+    const result = await account.createEmailPasswordSession(email, password);
     return parseStringify(result);
   } catch (error) {
     console.error(error);

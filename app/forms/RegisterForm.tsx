@@ -52,7 +52,6 @@ const RegisterForm = () => {
       const { name, email, password } = values;
       const userData = { name, email, password };
       console.log(userData);
-      const account = await createAccount(userData);
       const newUser = await createUser(userData);
       console.log(newUser);
       const loginSession = await loginUser({ email, password });

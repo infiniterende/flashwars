@@ -14,9 +14,8 @@ import CustomFormField from "../ui/CustomFormField";
 
 import { Form } from "@/components/ui/form";
 import SubmitButton from "../ui/SubmitButton";
-import { UserFormValidation, FlashcardFormValidation } from "@/lib/validation";
+import { FlashcardFormValidation } from "@/lib/validation";
 import { SelectItem } from "@/components/ui/select";
-import { create } from "domain";
 
 export enum FormFieldType {
   INPUT = "input",

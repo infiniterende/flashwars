@@ -5,20 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { createFlashcard } from "@/lib/actions/flashcard.actions";
 import { getAllDecks } from "@/lib/actions/deck.actions";
-import CustomFormField from "../ui/CustomFormField";
 import { Button } from "../ui/button";
-import { Form } from "@/components/ui/form";
-import SubmitButton from "../ui/SubmitButton";
-import { UserFormValidation, FlashcardFormValidation } from "@/lib/validation";
-import { SelectItem } from "@/components/ui/select";
+import { FlashcardFormValidation } from "@/lib/validation";
 import FlashcardForm from "../forms/FlashcardForm";
 
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -50,33 +44,7 @@ const DateModal = ({
 }) => {
   // 1. Define your form.
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState(false);
-
-  const [decks, setDecks] = useState<any>();
-
-  const form = useForm<z.infer<typeof FlashcardFormValidation>>({
-    resolver: zodResolver(FlashcardFormValidation),
-    defaultValues: {
-      question: "",
-      answer: "",
-      deck: "",
-    },
-  });
-
-  const fetchDecks = async () => {
-    const allDecks = await getAllDecks();
-    setDecks(allDecks.documents);
-  };
-
-  useEffect(() => {
-    fetchDecks();
-  }, []);
-
-  console.log(decks);
-
-  const router = useRouter();
-  // 2. Define a submit handler.
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

@@ -1,24 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createFlashcard } from "@/lib/actions/flashcard.actions";
-import { getAllDecks } from "@/lib/actions/deck.actions";
-import CustomFormField from "../ui/CustomFormField";
 import { Button } from "../ui/button";
-import { Form } from "@/components/ui/form";
-import SubmitButton from "../ui/SubmitButton";
-import { UserFormValidation, FlashcardFormValidation } from "@/lib/validation";
-import { SelectItem } from "@/components/ui/select";
-import FlashcardForm from "../forms/FlashcardForm";
 import DeckForm from "../forms/DeckForm";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -38,10 +26,8 @@ export enum FormFieldType {
 const DeckModal = () => {
   // 1. Define your form.
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState(false);
 
-  const router = useRouter();
   // 2. Define a submit handler.
 
   return (
