@@ -10,14 +10,13 @@ import {
 } from "@/components/ui/carousel";
 
 import { Card, CardContent } from "@/components/ui/card";
-
+import FlashcardModal from "@/app/components/FlashcardModal";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { getFlashcards } from "@/lib/actions/flashcard.actions";
 import { DataTable } from "@/app/components/tables/DataTable";
 import { columns } from "@/app/components/tables/columns";
-
 const DeckPage = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [flashcards, setFlashcards] = useState<any>();
@@ -80,6 +79,7 @@ const DeckPage = () => {
               <CarouselNext className="carousel-next bg-teal-500 text-white" />
             </Carousel>
           </div>
+          <FlashcardModal />
           <div className="flex justify-center">
             {flashcards && <DataTable columns={columns} data={flashcards} />}
           </div>

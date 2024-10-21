@@ -35,45 +35,11 @@ export enum FormFieldType {
   PASSWORD_INPUT = "password",
 }
 
-const DateModal = ({
-  $id,
-  question,
-  answer,
-  lastReviewed,
-  deck,
-}: {
-  $id: any;
-  question: any;
-  answer: any;
-  lastReviewed: Date;
-  deck: any;
-}) => {
+const FlashcardModal = () => {
   // 1. Define your form.
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState(false);
-
-  const [decks, setDecks] = useState<any>();
-
-  const form = useForm<z.infer<typeof FlashcardFormValidation>>({
-    resolver: zodResolver(FlashcardFormValidation),
-    defaultValues: {
-      question: "",
-      answer: "",
-      deck: "",
-    },
-  });
-
-  const fetchDecks = async () => {
-    const allDecks = await getAllDecks();
-    setDecks(allDecks.documents);
-  };
-
-  useEffect(() => {
-    fetchDecks();
-  }, []);
-
-  console.log(decks);
 
   const router = useRouter();
   // 2. Define a submit handler.
@@ -81,22 +47,25 @@ const DateModal = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" className=" text-teal-500">
-          Edit
+        <Button
+          variant="ghost"
+          className=" w-1/6 flex mx-0 my-8 bg-teal-500 text-center  text-white p-4"
+        >
+          <p className="text-center">Add Flashcard</p>
         </Button>
       </DialogTrigger>
       <DialogContent className="shad-dialog sm:max-w-md">
         <DialogHeader className="mb-4 space-y-3">
-          <DialogTitle className="capitalize">Edit Flashcard</DialogTitle>
+          <DialogTitle className="capitalize">Create Flashcard</DialogTitle>
         </DialogHeader>
 
         <FlashcardForm
-          type="edit"
-          $id={$id}
-          question={question}
-          answer={answer}
-          deck={deck}
-          lastReviewed={lastReviewed}
+          type="create"
+          $id=""
+          question=""
+          answer=""
+          deck=""
+          lastReviewed={new Date()}
           setOpen={setOpen}
         />
       </DialogContent>
@@ -104,4 +73,4 @@ const DateModal = ({
   );
 };
 
-export default DateModal;
+export default FlashcardModal;

@@ -19,6 +19,12 @@ export const columns: ColumnDef<Flashcard>[] = [
   {
     accessorKey: "question",
     header: "Question",
+    cell: ({ row }) => {
+      const flashcard = row.original;
+      return (
+        <p className="text-14-regular min-w-[250px]">{flashcard.question}</p>
+      );
+    },
   },
   {
     accessorKey: "lastReviewed",
@@ -34,17 +40,17 @@ export const columns: ColumnDef<Flashcard>[] = [
   },
   {
     id: "actions",
-    header: () => <div className="pl-4">Change Date</div>,
+    header: () => <div className="pl-4 p-2">Edit</div>,
     cell: ({ row }) => {
       const flashcard = row.original;
       return (
-        <div>
+        <div className="min-w-[100px] flex flex-row">
           <Image
             src="/assets/icons/calendar.svg"
             height={24}
             width={24}
             alt="calendar"
-            className="ml-2"
+            className="ml-2 text-teal-500"
           />
           <DateModal {...flashcard} />
         </div>
