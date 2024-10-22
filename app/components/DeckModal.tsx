@@ -45,7 +45,7 @@ const DeckModal = () => {
           <DialogTitle className="capitalize">Create Deck</DialogTitle>
         </DialogHeader>
 
-        <DeckForm />
+        <DeckForm setOpen={setOpen} />
       </DialogContent>
     </Dialog>
   );

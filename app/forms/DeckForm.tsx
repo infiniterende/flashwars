@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,7 +11,6 @@ import CustomFormField from "../ui/CustomFormField";
 import { Form } from "@/components/ui/form";
 import SubmitButton from "../ui/SubmitButton";
 import { DeckFormValidation } from "@/lib/validation";
-import { SelectItem } from "@/components/ui/select";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -24,7 +23,7 @@ export enum FormFieldType {
   PASSWORD_INPUT = "password",
 }
 
-const DeckForm = () => {
+const DeckForm = ({ setOpen }: { setOpen: (open) => void }) => {
   // 1. Define your form.
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -49,6 +48,7 @@ const DeckForm = () => {
       const deck = await createDeck(deckData);
       console.log(deck);
       if (deck) {
+        setOpen(false);
         router.push("/decks");
       }
     } catch (error) {
