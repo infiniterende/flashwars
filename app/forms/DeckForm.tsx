@@ -23,7 +23,7 @@ export enum FormFieldType {
   PASSWORD_INPUT = "password",
 }
 
-const DeckForm = ({ setOpen }: { setOpen: (open) => void }) => {
+const DeckForm = ({ setOpen }: { setOpen: (open: any) => void }) => {
   // 1. Define your form.
 
   const [isLoading, setIsLoading] = useState<boolean>(false);

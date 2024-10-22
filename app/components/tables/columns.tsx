@@ -1,7 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import DatePicker from "react-datepicker";
 import Image from "next/image";
 import { formatDateTime } from "@/lib/utils";
 import DateModal from "../DateModal";
