@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -14,23 +14,37 @@ import FlashcardModal from "@/app/components/FlashcardModal";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { getFlashcards } from "@/lib/actions/flashcard.actions";
+import { getAllDecks } from "@/lib/actions/deck.actions";
 import { DataTable } from "@/app/components/tables/DataTable";
 import { columns } from "@/app/components/tables/columns";
 const DeckPage = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [flashcards, setFlashcards] = useState<any>();
+  const [decks, setDecks] = useState<any>([]);
 
+  const deckId = useRef<any>();
   const params = useParams<any>();
   // const router = useRouter();
   // const id: any = router.query.id;
 
   const fetchFlashcards = async (deckId: any) => {
     const cards = await getFlashcards(deckId);
-    console.log(cards);
     setFlashcards(cards.documents);
   };
+
+  const fetchDecks = async () => {
+    const deckData = await getAllDecks();
+    setDecks(deckData.documents);
+    const id = decks?.find((deck: any) => deck.$id === params.id);
+    deckId.current = id;
+  };
+
   useEffect(() => {
     fetchFlashcards(params.id);
+  }, []);
+
+  useEffect(() => {
+    fetchDecks();
   }, []);
 
   return (
